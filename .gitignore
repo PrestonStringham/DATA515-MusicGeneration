@@ -1,0 +1,8 @@
+#
+# Ignore large Magenta models aka bundles aka mag files
+#
+*.mag
+
+
+# --- END --- #
+
