@@ -1,0 +1,18 @@
+#
+# Ignore large Magenta models aka bundles aka mag files
+#
+*.mag
+
+#
+# DS_Store files created by macOS for reasons unknown...:-P
+# 
+.DS_Store
+
+#
+# Vim session files
+#
+Session.vim
+
+
+# --- END --- #
+
