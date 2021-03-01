@@ -6,7 +6,6 @@ matplotlib
 seaborn
 typing_extensions
 jupyter
-nb_conda_kernels
 ipykernel
 jupytext 
 
