@@ -14,6 +14,6 @@ class EasyMusicGenerator:
         prep = pp.Preprocessor()
         scores_parsed = prep.parse_scores(self.path)
         note_matrix = prep.get_note_matrix()
-        chord_matrix = prep.get_chord_matrix()
+        #chord_matrix = prep.get_chord_matrix()
         print(note_matrix)
-        print(chord_matrix)
+        #print(chord_matrix)
