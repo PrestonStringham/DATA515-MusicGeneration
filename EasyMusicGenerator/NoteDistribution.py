@@ -39,18 +39,21 @@ class NoteDistribution:
                     note_dic[str(notes[i].pitch.midi)] += 1
                 else:
                     note_dic[str(notes[i].pitch.midi)] = 1
+
+            #Get the very last note since we miss it in the loop above
+            if notes[len(notes)-1].pitch.midi in note_dic:
+                note_dic[str(notes[len(notes) - 1].pitch.midi)] += 1
+            else:
+                note_dic[str(notes[len(notes) - 1].pitch.midi)] = 1
             #Check if the notes are actually being added to the dictionary 
             #We could have issues if a file ONLY has chords
             if len(dic.keys()) == 0:
                 raise NoNotesFoundException()
 
-            #Get the total number of notes
-            total = sum(dic.values())
-
             total_notes = sum(note_dic.values())
 
             for i in note_dic.keys():
-                note_dic[i] /= total
+                note_dic[i] /= total_notes
 
             stochastic_matrix = self.get_stochastic_note_matrix(dic)
             for i in range(len(stochastic_matrix[0, ])):
