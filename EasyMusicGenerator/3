@@ -1,0 +1,15 @@
+import numpy as np
+
+class Pregenerator:
+    def __init__(self):
+        self.primer_melody = None
+        self.backing_chrods = None
+
+    def generate_primer_melody(self, matrix_tuple, bars):
+        primer_melody_arr = []
+        matrix = matrix_tuple[0]
+        dictionary = matrix_tuple[1]
+        notes = list(dictionary.keys())
+        note_probability = list(dictionary.values())
+        first_note = int(np.random.choice(notes, p=note_probability))
+        print(sum(matrix[first_note,]))

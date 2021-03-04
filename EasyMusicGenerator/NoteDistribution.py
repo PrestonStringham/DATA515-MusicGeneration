@@ -12,6 +12,7 @@ class NoteDistribution:
     def get_note_matrix(self, scores):
         #Dictionary to store probabilites of neighboring notes
         dic = {}
+        note_dic = {}
         #iterate through all the scores
         for score in scores:
             #I don't think this line is needed
@@ -33,6 +34,11 @@ class NoteDistribution:
                     dic[pair] += 1
                 else:
                     dic[pair] = 1
+
+                if str(notes[i].pitch.midi) in note_dic:
+                    note_dic[str(notes[i].pitch.midi)] += 1
+                else:
+                    note_dic[str(notes[i].pitch.midi)] = 1
             #Check if the notes are actually being added to the dictionary 
             #We could have issues if a file ONLY has chords
             if len(dic.keys()) == 0:
@@ -41,12 +47,19 @@ class NoteDistribution:
             #Get the total number of notes
             total = sum(dic.values())
 
-            #Normalize counts of notes by total
-            for i in dic.keys():
-                dic[i] /= total
+            total_notes = sum(note_dic.values())
+
+            for i in note_dic.keys():
+                note_dic[i] /= total
 
             stochastic_matrix = self.get_stochastic_note_matrix(dic)
-            return stochastic_matrix
+            for i in range(len(stochastic_matrix[0, ])):
+                sum_count = sum(stochastic_matrix[i, ])
+                for j in range(len(stochastic_matrix[0, ])):
+                    if sum_count != 0:
+                        stochastic_matrix[i, j] = np.divide(stochastic_matrix[i,j], sum_count)
+
+            return (stochastic_matrix, note_dic)
 
     def get_stochastic_note_matrix(self, distribution):
         #128 total MIDI notes

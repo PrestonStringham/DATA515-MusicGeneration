@@ -7,7 +7,8 @@ class Preprocessor:
 
     def __init__(self):
         self.scores = None
-
+        self.note_matrix = None
+        self.chord_matrix = None
     def parse_scores(self, path):
         #Look for MusicXML and MIDI Files
         mxlfiles = [f for f in glob.glob(path + "*.mxl")]
@@ -25,8 +26,10 @@ class Preprocessor:
 
     def get_note_matrix(self):
         note_dist = nd.NoteDistribution()
-        return note_dist.get_note_matrix(self.scores)
+        self.note_matrix = note_dist.get_note_matrix(self.scores)
+        return self.note_matrix
 
     def get_chord_matrix(self):
         chord_dist = cd.ChordDistribution()
-        return chord_dist.get_chord_matrix(self.scores)
+        self.chord_matrix = chord_dist.get_chord_matrix(self.scores)
+        return self.chord_matrix
