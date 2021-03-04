@@ -1,7 +1,3 @@
-"""This is the main module for EasyMusicGenerator
-"""
-__version__ = '0.1.0'
-
 import Preprocessor as pp
 import Pregenerator as pg
 #import Generator as gen
