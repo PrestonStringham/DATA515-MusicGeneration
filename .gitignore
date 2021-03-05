@@ -1,4 +1,9 @@
 #
+# Ignore cached Python byte code
+# 
+__pycache__
+
+#
 # Ignore large Magenta models aka bundles aka mag files
 #
 *.mag
