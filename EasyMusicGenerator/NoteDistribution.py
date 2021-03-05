@@ -60,9 +60,9 @@ class NoteDistribution:
                 sum_count = sum(stochastic_matrix[i, ])
                 for j in range(len(stochastic_matrix[0, ])):
                     if sum_count != 0:
-                        stochastic_matrix[i, j] = np.divide(stochastic_matrix[i,j], sum_count)
+                        stochastic_matrix[i, j] = np.divide(stochastic_matrix[i, j], sum_count)
 
-            return (stochastic_matrix, note_dic)
+        return (stochastic_matrix, note_dic)
 
     def get_stochastic_note_matrix(self, distribution):
         #128 total MIDI notes

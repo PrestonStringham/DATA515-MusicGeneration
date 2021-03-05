@@ -11,16 +11,11 @@ class ChordDistribution:
         dic = {}
         for score in scores:
             chords = score.chordify()
-            for chord in chords.recurse().getElementsByClass('Chord'):
+            for i in range(len(chords.recurse().getElementsByClass('Chord'))-1):
             #Iterate through list of notes/counts and add the count of each note to the dictionary
             #for n in sorted(nameOctaveCount):
-                forteclass = chord.pitchedCommonName
-                if forteclass in dic:
-                    dic[forteclass] += 1
-                else:
-                    dic[forteclass] = 1
-        self.chord_distribution = dic
-        return self.chord_distribution
+                chord_notes = chords[i].notes
+                print(chord_notes)
 
     def chord_hist(self):
         ind = [i for i in range(len(self.chord_distribution))]
