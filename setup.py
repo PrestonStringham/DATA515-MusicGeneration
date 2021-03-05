@@ -14,8 +14,13 @@ setup(
                                     'Pregenerator',
                                     ]),
     install_requires=[
+        'numpy==1.20',
+        'scipy',
+        'pandas',
+        'scikit-learn',
         'matplotlib==3.3.4',
-        'numpy==1.19.5',
+        'seaborn',
+        'magenta',
         'music21==6.7.0',
     ]
 )
