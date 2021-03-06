@@ -56,12 +56,7 @@ class NoteDistribution:
                 note_dic[i] /= total_notes
 
             stochastic_matrix = self.get_stochastic_note_matrix(dic)
-            for i in range(len(stochastic_matrix[0, ])):
-                sum_count = sum(stochastic_matrix[i, ])
-                for j in range(len(stochastic_matrix[0, ])):
-                    if sum_count != 0:
-                        stochastic_matrix[i, j] = np.divide(stochastic_matrix[i, j], sum_count)
-
+            
         return (stochastic_matrix, note_dic)
 
     def get_stochastic_note_matrix(self, distribution):
@@ -76,6 +71,11 @@ class NoteDistribution:
             indices = [int(i.split(' ')[0]), int(i.split(' ')[1])]
             #Insert the value at the proper position
             matrix[indices[0], indices[1]] = value
+        for i in range(len(matrix[0, ])):
+                sum_count = sum(matrix[i, ])
+                for j in range(len(matrix[0, ])):
+                    if sum_count != 0:
+                        matrix[i, j] = np.divide(matrix[i, j], sum_count)
         return matrix
 
     def note_hist(self):
