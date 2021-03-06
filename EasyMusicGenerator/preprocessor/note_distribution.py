@@ -7,9 +7,10 @@ import matplotlib.pyplot as plt
 class NoteDistribution:
 
     def __init__(self):
-        note_distribution = None
+        pass
 
-    def get_note_matrix(self, scores):
+    @staticmethod
+    def get_note_matrix(scores):
         #Dictionary to store probabilites of neighboring notes
         dic = {}
         note_dic = {}
@@ -45,7 +46,7 @@ class NoteDistribution:
                 note_dic[str(notes[len(notes) - 1].pitch.midi)] += 1
             else:
                 note_dic[str(notes[len(notes) - 1].pitch.midi)] = 1
-            #Check if the notes are actually being added to the dictionary 
+            #Check if the notes are actually being added to the dictionary
             #We could have issues if a file ONLY has chords
             if len(dic.keys()) == 0:
                 raise NoNotesFoundException()
@@ -55,11 +56,12 @@ class NoteDistribution:
             for i in note_dic.keys():
                 note_dic[i] /= total_notes
 
-            stochastic_matrix = self.get_stochastic_note_matrix(dic)
-            
+            stochastic_matrix = NoteDistribution.get_stochastic_note_matrix(dic)
+
         return (stochastic_matrix, note_dic)
 
-    def get_stochastic_note_matrix(self, distribution):
+    @staticmethod
+    def get_stochastic_note_matrix(distribution):
         #128 total MIDI notes
         size = 128
 
@@ -77,18 +79,6 @@ class NoteDistribution:
                     if sum_count != 0:
                         matrix[i, j] = np.divide(matrix[i, j], sum_count)
         return matrix
-
-    def note_hist(self):
-        ind = [i for i in range(len(self.note_distribution))]
-        fig, ax = plt.subplots()
-        ax.bar(ind, self.note_distribution.values())
-        plt.xticks(ind, self.note_distribution.keys(), rotation='vertical')
-        plt.show()
-
-class NoFilesFoundException(Exception):
-    def __init__(self, message="No MIDI or MusicXML files found in the provided directory. Please check the path."):
-        self.message = message
-        super().__init__(self.message)
 
 class NoNotesFoundException(Exception):
     def __init__(self, message="The provided MIDI or MusicXML files do not contain any notes."):
