@@ -1,6 +1,4 @@
-
-from .__version import __version__
+"""Top-level __init__.py for EasyMusicGenerator
+"""
 from Preprocessor import *
-
-# --- END --- #
-
+from .__version import __version__
