@@ -51,11 +51,7 @@ class NoteDistribution:
             if len(dic.keys()) == 0:
                 raise NoNotesFoundException()
 
-            total_notes = sum(note_dic.values())
-
-            for i in note_dic.keys():
-                note_dic[i] /= total_notes
-
+            note_dic = NoteDistribution.get_note_probabilities(note_dic)
             stochastic_matrix = NoteDistribution.get_stochastic_note_matrix(dic)
 
         return (stochastic_matrix, note_dic)
@@ -79,6 +75,13 @@ class NoteDistribution:
                     if sum_count != 0:
                         matrix[i, j] = np.divide(matrix[i, j], sum_count)
         return matrix
+
+    @staticmethod
+    def get_note_probabilities(distribution):
+        total = sum(distribution.values())
+        for key in distribution.keys():
+            distribution[key] /= total
+        return distribution
 
 class NoNotesFoundException(Exception):
     def __init__(self, message="The provided MIDI or MusicXML files do not contain any notes."):
