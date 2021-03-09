@@ -32,6 +32,8 @@ class ChordDistribution:
                             if mus.harmony.chordSymbolFigureFromChord(elements[i]) != 'Chord Symbol Cannot Be Identified':
                                 chords.append(mus.harmony.chordSymbolFigureFromChord(elements[i]))
             chord_arr = chord_arr + chords
+        if len(chord_arr) == 0:
+            raise NoChordsFoundException()
         #The chord_arr has been filled. Let's get the pairs and individual chords in thier own dictionary
         for i in range(len(chord_arr) - 1):
             pair = str(chord_arr[i]) + ' ' + str(chord_arr[i+1])
@@ -77,7 +79,7 @@ class ChordDistribution:
             dic[key] /= total
         return dic
 
-class NoNotesFoundException(Exception):
-    def __init__(self, message="The provided MIDI or MusicXML files do not contain any notes."):
+class NoChordsFoundException(Exception):
+    def __init__(self, message="The provided MIDI or MusicXML files do not contain any chords."):
         self.message = message
         super().__init__(self.message)
