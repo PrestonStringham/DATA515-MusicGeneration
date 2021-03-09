@@ -1,16 +1,11 @@
 #
 # Ignore cached Python byte code
-# 
+#
 __pycache__
 
 #
-# Ignore large Magenta models aka bundles aka mag files
-#
-*.mag
-
-#
 # DS_Store files created by macOS for reasons unknown...:-P
-# 
+#
 .DS_Store
 
 #
@@ -20,4 +15,3 @@ Session.vim
 
 
 # --- END --- #
-
