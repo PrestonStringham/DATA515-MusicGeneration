@@ -1,6 +1,7 @@
 import music21 as mus
 import numpy as np
 import sys
+from chord_distribution.py import NoNotesFoundException
 np.set_printoptions(threshold=sys.maxsize)
 import matplotlib.pyplot as plt
 
@@ -82,8 +83,3 @@ class NoteDistribution:
         for key in distribution.keys():
             distribution[key] /= total
         return distribution
-
-class NoNotesFoundException(Exception):
-    def __init__(self, message="The provided MIDI or MusicXML files do not contain any notes."):
-        self.message = message
-        super().__init__(self.message)
