@@ -1,5 +1,5 @@
 import preprocessor.preprocessor as pp
-import Pregenerator as pg
+import pregenerator as pg
 #import Generator as gen
 
 class EasyMusicGenerator:
