@@ -1,6 +1,0 @@
-
-pip install magenta
-
-
-# --- END --- #
-

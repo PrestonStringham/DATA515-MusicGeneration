@@ -1,6 +1,0 @@
-
-pip install mido
-
-
-# --- END --- #
-
