@@ -1,9 +1,19 @@
 import unittest
 from preprocessor import ChordDistribution
 
-chord_distro = ChordDistribution()
+class TestChordDistribution( unittest.TestCase ):
 
-my_chord_dict = { 'chord_1': 1 }
+    def test_get_chord_probabilities( self ):
+        #
+        # Print a blank separator line.
+        #
+        print()
+        chord_distro = ChordDistribution()
+
+        my_chord_dict = { 'chord_1': 1, 'chord_2': 1 }
+
+        print( ChordDistribution.get_chord_probabilities( my_chord_dict ) )
+        print( chord_distro.get_chord_probabilities( my_chord_dict ) )
 
 
 # --- END --- #
