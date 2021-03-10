@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.org/PrestonStringham/DATA515-MusicGeneration.png?branch=master)](https://travis-ci.org/PrestonStringham/DATA515-MusicGeneration)
+![Travis (.org)](https://img.shields.io/travis/PrestonStringham/DATA515-MusicGeneration)
 
 This repo is our team project for Data 515 in the University of
 Washington Masters in Data Science program.
