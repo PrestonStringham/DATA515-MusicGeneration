@@ -1,5 +1,5 @@
 import unittest
-import chord_distribution as cd
+import preprocessor.chord_distribution as cd
 
 class TestChordDistribution( unittest.TestCase ):
 
