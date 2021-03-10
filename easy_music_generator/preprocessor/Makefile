@@ -8,7 +8,7 @@ PY3=python3
 #  https://stackoverflow.com/questions/1896918/running-unittest-with-typical-test-directory-structure
 #
 test:
-	$(PY3) -m unittest tests.test_preproc
+	$(PY3) -m unittest tests.test_chord_distribution
 
 
 # --- END --- #
