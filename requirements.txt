@@ -6,4 +6,4 @@ matplotlib==3.3.4
 seaborn
 magenta
 music21==6.7.0
-
+flake8
