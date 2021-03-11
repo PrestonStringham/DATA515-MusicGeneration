@@ -3,17 +3,18 @@ from preprocessor.chord_distribution import ChordDistribution
 import music21 as mus
 import glob
 
+
 class Preprocessor:
 
     def __init__(self):
         self.scores = None
 
     def parse_scores(self, path):
-        #Look for MusicXML and MIDI Files
+        # Look for MusicXML and MIDI Files
         mxlfiles = [f for f in glob.glob(path + "*.mxl")]
         midifiles = [f for f in glob.glob(path + "*.mid")]
         files = mxlfiles + midifiles
-        #If no MIDI or MusicXML files exist, raise exception
+        # If no MIDI or MusicXML files exist, raise exception
         score_objects = []
 
         if len(files) == 0:
@@ -34,6 +35,7 @@ class Preprocessor:
 
 
 class NoFilesFoundException(Exception):
-    def __init__(self, message="No MIDI or MusicXML files found in the provided directory. Please check the path."):
+    def __init__(self, message="No MIDI or MusicXML files found in "
+                 "the provided directory. Please check the path."):
         self.message = message
         super().__init__(self.message)
