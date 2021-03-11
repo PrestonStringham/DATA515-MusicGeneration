@@ -16,7 +16,7 @@ class Pregenerator:
         current_note = first_note
 
         for i in range(bars - 1):
-            #primer_melody_arr.append(np.random.choice([-1, -2]))
+            primer_melody_arr.append(np.random.choice([-1, -2]))
             next_note = np.random.choice(range(128), p=matrix[current_note, ])
             primer_melody_arr.append(next_note)
             current_note = next_note
@@ -33,7 +33,7 @@ class Pregenerator:
         first_chord = np.random.choice(chords, p=chord_probability)
         backing_chords_arr.append(first_chord)
         current_chord = matrix_dictionary[first_chord]
-        for i in range(bars - 1):
+        for i in range((bars - 1)*4):
             next_chord = chords[matrix_dictionary[np.random.choice(chords, p=matrix[current_chord])]]
             backing_chords_arr.append(next_chord)
             current_chord = matrix_dictionary[next_chord]

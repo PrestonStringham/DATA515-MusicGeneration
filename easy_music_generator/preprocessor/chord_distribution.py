@@ -18,7 +18,9 @@ class ChordDistribution:
             for i in range(len(elements)):
                 if isinstance(elements[i], mus.chord.Chord):
                     if mus.harmony.chordSymbolFigureFromChord(elements[i]) != 'Chord Symbol Cannot Be Identified':
-                        chords.append(mus.harmony.chordSymbolFigureFromChord(elements[i]))
+                        cleansed_note = str(mus.harmony.chordSymbolFigureFromChord(elements[i])).replace('power', '')
+                        cleansed_note = str(mus.harmony.chordSymbolFigureFromChord(elements[i])).replace('pedal', '')
+                        chords.append(cleansed_note)
             #If a file does not have chords, try to chordify the files and analyze again
             #This conditional should fail if a file does have at least one chord
             if(len(chords) == 0):
@@ -30,7 +32,9 @@ class ChordDistribution:
                         #why the first conditional doesn't catch everything
                         if mus.harmony.chordSymbolFigureFromChord(elements[i]) != 'Chord Symbol Cannot Be Identified':
                             if mus.harmony.chordSymbolFigureFromChord(elements[i]) != 'Chord Symbol Cannot Be Identified':
-                                chords.append(mus.harmony.chordSymbolFigureFromChord(elements[i]))
+                                cleansed_note = str(mus.harmony.chordSymbolFigureFromChord(elements[i])).replace('power', '')
+                                cleansed_note = str(mus.harmony.chordSymbolFigureFromChord(elements[i])).replace('pedal', '')
+                                chords.append(cleansed_note)
             chord_arr = chord_arr + chords
         if len(chord_arr) == 0:
             raise NoChordsFoundException()
