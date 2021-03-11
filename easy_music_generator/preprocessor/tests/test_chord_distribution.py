@@ -13,8 +13,19 @@ class TestChordDistribution( unittest.TestCase ):
 
         my_chord_dict = { 'chord_1': 1, 'chord_2': 1 }
 
-        print( cd.ChordDistribution.get_chord_probabilities( my_chord_dict ) )
-        print( chord_distro.get_chord_probabilities( my_chord_dict ) )
+        #
+        # Test the method as a static method
+        #
+        _ = cd.ChordDistribution.get_chord_probabilities( my_chord_dict )
+        self.assertEqual( my_chord_dict[ 'chord_1' ], 0.5 )
+        self.assertEqual( my_chord_dict[ 'chord_2' ], 0.5 )
+
+        #
+        # Test the method as an instance method
+        #
+        _ = chord_distro.get_chord_probabilities( my_chord_dict ) 
+        self.assertEqual( my_chord_dict[ 'chord_1' ], 0.5 )
+        self.assertEqual( my_chord_dict[ 'chord_2' ], 0.5 )
 
 
 # --- END --- #
