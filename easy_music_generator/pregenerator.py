@@ -10,6 +10,7 @@ class Pregenerator:
         matrix = matrix_tuple[0]
         dictionary = matrix_tuple[1]
         notes = list(dictionary.keys())
+        print(notes)
         note_probability = list(dictionary.values())
         first_note = int(np.random.choice(notes, p=note_probability))
         primer_melody_arr.append(first_note)
@@ -33,7 +34,7 @@ class Pregenerator:
         first_chord = np.random.choice(chords, p=chord_probability)
         backing_chords_arr.append(first_chord)
         current_chord = matrix_dictionary[first_chord]
-        for i in range((bars - 1)*4):
+        for i in range((bars - 1)):
             next_chord = chords[matrix_dictionary[np.random.choice(chords, p=matrix[current_chord])]]
             backing_chords_arr.append(next_chord)
             current_chord = matrix_dictionary[next_chord]
