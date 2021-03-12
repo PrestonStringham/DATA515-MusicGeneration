@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Pregenerator:
     def __init__(self):
         self.primer_melody = None

@@ -1,6 +1,7 @@
 import music21 as mus
 import numpy as np
 
+
 class ChordDistribution:
 
     def __init__(self):
@@ -13,7 +14,7 @@ class ChordDistribution:
         chord_arr = []
         for score in scores:
             chords = []
-            #If a file has chords, analyze those
+            # If a file has chords, analyze those
             elements = score.flat.elements
             for i in range(len(elements)):
                 if isinstance(elements[i], mus.chord.Chord):
@@ -21,15 +22,15 @@ class ChordDistribution:
                         cleansed_note = str(mus.harmony.chordSymbolFigureFromChord(elements[i])).replace('power', '')
                         cleansed_note = str(mus.harmony.chordSymbolFigureFromChord(elements[i])).replace('pedal', '')
                         chords.append(cleansed_note)
-            #If a file does not have chords, try to chordify the files and analyze again
-            #This conditional should fail if a file does have at least one chord
+            # If a file does not have chords, try to chordify the files and analyze again
+            # This conditional should fail if a file does have at least one chord
             if(len(chords) == 0):
                 chorded = score.chordify()
                 elements = chorded.flat.elements
                 for i in range(len(elements)):
                     if isinstance(elements[i], mus.chord.Chord):
-                        #You NEED to check for 'Chord Symbol Cannot Be Identified' twice here. Not entirely sure
-                        #why the first conditional doesn't catch everything
+                        # You NEED to check for 'Chord Symbol Cannot Be Identified' twice here. Not entirely sure
+                        # why the first conditional doesn't catch everything
                         if mus.harmony.chordSymbolFigureFromChord(elements[i]) != 'Chord Symbol Cannot Be Identified':
                             if mus.harmony.chordSymbolFigureFromChord(elements[i]) != 'Chord Symbol Cannot Be Identified':
                                 cleansed_note = str(mus.harmony.chordSymbolFigureFromChord(elements[i])).replace('power', '')
@@ -38,7 +39,7 @@ class ChordDistribution:
             chord_arr = chord_arr + chords
         if len(chord_arr) == 0:
             raise NoChordsFoundException()
-        #The chord_arr has been filled. Let's get the pairs and individual chords in thier own dictionary
+        # The chord_arr has been filled. Let's get the pairs and individual chords in thier own dictionary
         for i in range(len(chord_arr) - 1):
             pair = str(chord_arr[i]) + ' ' + str(chord_arr[i+1])
             if pair in dic:
