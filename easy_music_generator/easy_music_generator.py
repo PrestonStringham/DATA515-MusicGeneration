@@ -1,6 +1,7 @@
 import preprocessor.preprocessor as pp
 import pregenerator as pg
 import subprocess
+from subprocess import DEVNULL, STDOUT, check_call
 import os
 
 
@@ -34,15 +35,15 @@ class EasyMusicGenerator:
 
         OUTPUT_PATH = output_path
 
-        #command = 'improv_rnn_generate --config=chord_pitches_improv --bundle_file=' + BUNDLE_PATH + ' --output_dir=' + OUTPUT_PATH + ' --num_outputs=1 --num_steps=128 --primer_melody="' + primer_string + '" --render_chords'
+        # 16 steps in a bar
+        num_steps = str(16*bars)
 
-        command = 'polyphony_rnn_generate --bundle_file=' + BUNDLE_PATH + ' --output_dir=' + OUTPUT_PATH + ' --num_outputs=1 --num_steps=128 --primer_melody="' + primer_string + '" --primer_pitches="' + backing_string + '" --condition_on_primer=true --inject_primer_during_generation=false'
+        command = 'polyphony_rnn_generate --bundle_file=' + BUNDLE_PATH + ' --output_dir=' + OUTPUT_PATH + ' --num_outputs=1 --num_steps=' + num_steps + ' --primer_melody="' + primer_string + '" --primer_pitches="' + backing_string + '" --condition_on_primer=true --inject_primer_during_generation=false'
         
         command = f'{command}'
 
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+        process = subprocess.Popen(command, shell=True, stdout=DEVNULL, stderr=STDOUT)
         process.wait()
-        print (process.returncode)
 
     def analyze(self, input_path):
         prep = pp.Preprocessor()
