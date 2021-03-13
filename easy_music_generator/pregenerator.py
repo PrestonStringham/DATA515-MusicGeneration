@@ -1,5 +1,5 @@
 import numpy as np
-
+import music21 as mus
 
 class Pregenerator:
     def __init__(self):
@@ -11,7 +11,6 @@ class Pregenerator:
         matrix = matrix_tuple[0]
         dictionary = matrix_tuple[1]
         notes = list(dictionary.keys())
-        print(notes)
         note_probability = list(dictionary.values())
         first_note = int(np.random.choice(notes, p=note_probability))
         primer_melody_arr.append(first_note)
@@ -25,19 +24,13 @@ class Pregenerator:
 
         return primer_melody_arr
 
-    def generate_backing_chords(self, chord_tuple, bars):
-        backing_chords_arr = []
-        matrix = chord_tuple[0]
-        matrix_dictionary = chord_tuple[1]
-        chord_dic = chord_tuple[2]
-        chords = list(chord_dic.keys())
-        chord_probability = list(chord_dic.values())
-        first_chord = np.random.choice(chords, p=chord_probability)
-        backing_chords_arr.append(first_chord)
-        current_chord = matrix_dictionary[first_chord]
-        for i in range((bars - 1)):
-            next_chord = chords[matrix_dictionary[np.random.choice(chords, p=matrix[current_chord])]]
-            backing_chords_arr.append(next_chord)
-            current_chord = matrix_dictionary[next_chord]
+    def generate_backing_chords(self, chord_dictionary, bars):
+        chords = list(chord_dictionary.keys())
+        chord_probability = list(chord_dictionary.values())
+        first_chord = mus.harmony.ChordSymbol(np.random.choice(chords, p=chord_probability)).pitches
+        first_chord_array = []
 
-        return backing_chords_arr
+        for i in first_chord:
+            first_chord_array.append(i.midi)
+
+        return first_chord_array
