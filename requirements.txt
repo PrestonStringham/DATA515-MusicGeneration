@@ -7,3 +7,5 @@ seaborn
 magenta
 music21==6.7.0
 flake8
+coverage
+coverall
