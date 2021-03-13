@@ -1,7 +1,6 @@
 import EasyMusicGenerator as emg
 
-print( emg.__version__ )
+print(emg.__version__)
 
 
 # --- END --- #
-

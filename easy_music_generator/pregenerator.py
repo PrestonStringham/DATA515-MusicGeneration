@@ -1,6 +1,7 @@
 import numpy as np
 import music21 as mus
 
+
 class Pregenerator:
     def __init__(self):
         self.primer_melody = None
@@ -27,7 +28,8 @@ class Pregenerator:
     def generate_backing_chords(self, chord_dictionary, bars):
         chords = list(chord_dictionary.keys())
         chord_probability = list(chord_dictionary.values())
-        first_chord = mus.harmony.ChordSymbol(np.random.choice(chords, p=chord_probability)).pitches
+        first_chord = mus.harmony.ChordSymbol(np.random.choice(
+            chords, p=chord_probability)).pitches
         first_chord_array = []
 
         for i in first_chord:
