@@ -41,19 +41,13 @@ class ChordDistribution:
             raise NoChordsFoundException()
         # The chord_arr has been filled. Let's get the pairs and individual chords in thier own dictionary
         for i in range(len(chord_arr) - 1):
-            pair = str(chord_arr[i]) + ' ' + str(chord_arr[i+1])
-            if pair in dic:
-                pair_dic[pair] += 1
-            else:
-                pair_dic[pair] = 1
-
             if str(chord_arr[i]) in dic:
                 dic[str(chord_arr[i])] += 1
             else:
                 dic[str(chord_arr[i])] = 1
-        matrix, matrix_dictionary = ChordDistribution.get_stochastic_matrix(pair_dic, dic)
+
         chord_distribution = ChordDistribution.get_chord_probabilities(dic)
-        return (matrix, matrix_dictionary, chord_distribution)
+        return chord_distribution
 
     @staticmethod
     def get_stochastic_matrix(pairs, singles):
