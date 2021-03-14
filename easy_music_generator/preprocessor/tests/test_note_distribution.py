@@ -1,6 +1,5 @@
 import unittest
-from preprocessor.note_distribution import NoteDistribution as nd
-from preprocessor.note_distribution import NoNotesFoundException
+import preprocessor.note_distribution as nd
 import numpy as np
 import music21 as mus
 
@@ -31,7 +30,7 @@ class TestNoteDistribution(unittest.TestCase):
 
 
         expected_tuple = (expected_matrix, expected_prob_dic)
-        actual_tuple = nd.get_note_matrix([dummy_score_obj])
+        actual_tuple = nd.NoteDistribution.get_note_matrix([dummy_score_obj])
 
         # use np.allclose to check whether the two matrices are equal within a tolerance 
         self.assertTrue(np.allclose(expected_tuple[0], actual_tuple[0], rtol=1e-05, atol=1e-08))
@@ -48,8 +47,8 @@ class TestNoteDistribution(unittest.TestCase):
         '''
 
         score = mus.converter.parse('./music/test_no_notes_exception.xml')
-        with self.assertRaises(NoNotesFoundException) as context:
-            nd.get_note_matrix([score])
+        with self.assertRaises(nd.NoNotesFoundException) as context:
+            nd.NoteDistribution.get_note_matrix([score])
 
         self.assertEqual(
             context.exception.message,
@@ -68,15 +67,14 @@ class TestNoteDistribution(unittest.TestCase):
         expected_output = np.zeros((128, 128), dtype=float)
         expected_output[0, 1] = 1
         expected_output[127, 127] = 1
-        actual_output_true = nd.get_stochastic_note_matrix(input_distribution)
+        actual_output_true = nd.NoteDistribution.get_stochastic_note_matrix(input_distribution)
 
 
         self.assertTrue(np.allclose(actual_output_true, expected_output, rtol=1e-05, atol=1e-08))
     
         expected_output[127, 124] = 1
-        actual_output_false = nd.get_stochastic_note_matrix(input_distribution)
+        actual_output_false = nd.NoteDistribution.get_stochastic_note_matrix(input_distribution)
         self.assertFalse(np.allclose(actual_output_false, expected_output, rtol=1e-05, atol=1e-08))
-
 
 
     def test_get_note_probabilities(self):
@@ -88,7 +86,13 @@ class TestNoteDistribution(unittest.TestCase):
         
         input_distribution = {'60': 2, '55': 1, '83': 1}
         expected_output = {'60': 0.5, '55': 0.25, '83': 0.25}
-        self.assertEqual(nd.get_note_probabilities(input_distribution), expected_output)
+
+        # Test the method as a static method
+        self.assertEqual(nd.NoteDistribution.get_note_probabilities(input_distribution), expected_output)
+
+        # Test the method as an instance method
+        note_distribution = nd.NoteDistribution()
+        self.assertEqual(note_distribution.get_note_probabilities(input_distribution), expected_output)
 
 
 
