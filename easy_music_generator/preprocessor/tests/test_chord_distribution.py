@@ -9,7 +9,6 @@ class TestChordDistribution(unittest.TestCase):
     Unit tests for chord_distribution.py, a preprocessor module
     
     """
-
     def test_get_chord_matrix(self):
         '''
         Test get_chord_matrix(), the function takes a music21 Score object
@@ -26,6 +25,25 @@ class TestChordDistribution(unittest.TestCase):
         expected_output = {'D': 1.0}
         actual_output = cd.ChordDistribution.get_chord_matrix([s])
         self.assertEqual(expected_output, actual_output)
+
+
+
+    def test_get_chord_matrix_chordify(self):
+        '''
+        Unit tests get_chord_matrix() when the score object doesn't have chords. 
+        Mainly to test chordify files
+        '''
+        
+        # Score object that doesn't contain any chords
+        no_chord_score_obj = mus.stream.Score()
+        no_chord_score_obj.append(mus.note.Note('G9'))
+        no_chord_score_obj.append(mus.note.Note('F9')) 
+
+        expected_output = {'G': 1.0}
+
+        chord_distro = cd.ChordDistribution()
+        self.assertEqual(expected_output, chord_distro.get_chord_matrix([no_chord_score_obj]))
+
 
 
     def test_get_chord_matrix_raise_no_note_exception(self):
@@ -50,7 +68,7 @@ class TestChordDistribution(unittest.TestCase):
         Test get_chord_probabilities(), the function takes a dictionary of chord counts
         and returns a dictionary of the chord probabilities
         '''
-        
+
         my_chord_dict = {'chord_1': 1, 'chord_2': 1}
   
         # Test the method as a static method
