@@ -39,7 +39,7 @@ class TestChordDistribution(unittest.TestCase):
         no_chord_score_obj.append(mus.note.Note('G9'))
         no_chord_score_obj.append(mus.note.Note('F9')) 
 
-        expected_output = {'G': 1.0}
+        expected_output = {'Gpedal': 1.0}
 
         chord_distro = cd.ChordDistribution()
         self.assertEqual(expected_output, chord_distro.get_chord_matrix([no_chord_score_obj]))
