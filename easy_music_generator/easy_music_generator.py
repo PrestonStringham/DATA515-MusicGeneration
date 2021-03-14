@@ -11,8 +11,9 @@ class EasyMusicGenerator:
         self.note_matrix = None
         self.chord_distribution = None
 
-    def generate(self, tempo=90, bars=4,
-                 output_path='/music_generator_output'):
+    filepath = '/music_generator_output'
+
+    def generate(self, tempo=90, bars=4, output_path=filepath):
         preg = pg.Pregenerator()
         primer_melody = preg.generate_primer_melody(self.note_matrix, bars)
         primer_string = '['
