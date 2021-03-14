@@ -46,7 +46,7 @@ class ChordDistribution:
             raise NoChordsFoundException()
         # The chord_arr has been filled.
         # Let's get the pairs and individual chords in their own dictionary
-        for i in range(len(chord_arr) - 1):
+        for i in range(len(chord_arr)):
             if str(chord_arr[i]) in chord_dictionary:
                 chord_dictionary[str(chord_arr[i])] += 1
             else:
