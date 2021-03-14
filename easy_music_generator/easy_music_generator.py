@@ -54,7 +54,7 @@ class EasyMusicGenerator:
 
     def analyze(self, input_path):
         prep = pp.Preprocessor()
-        # scores_parsed = prep.parse_scores(input_path)
+        scores_parsed = prep.parse_scores(input_path)
         note_matrix = prep.get_note_matrix()
         chord_distribution = prep.get_chord_matrix()
         self.note_matrix = note_matrix
