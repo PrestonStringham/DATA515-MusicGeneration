@@ -56,13 +56,13 @@ class ChordDistribution:
             chord_dictionary)
         return chord_distribution
 
+
     @staticmethod
     def get_chord_probabilities(dictionary):
         total = sum(dictionary.values())
         for key in dictionary.keys():
             dictionary[key] /= total
         return dictionary
-
 
 class NoChordsFoundException(Exception):
     def __init__(self, message="The provided MIDI or MusicXML files do not contain any chords."):
