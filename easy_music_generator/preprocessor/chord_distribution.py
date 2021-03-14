@@ -49,27 +49,27 @@ class ChordDistribution:
         chord_distribution = ChordDistribution.get_chord_probabilities(dic)
         return chord_distribution
 
-    @staticmethod
-    def get_stochastic_matrix(pairs, singles):
-        pair_keys = list(pairs.keys())
-        single_keys = list(singles.keys())
-        pair_size = len(pair_keys)
-        single_size = len(single_keys)
-        dic = {}
-        for i in range(single_size):
-            dic[single_keys[i]] = i
-        matrix = np.zeros((single_size, single_size), dtype=float)
-        for i in range(pair_size):
-            value = pairs[pair_keys[i]]
-            chord_split = [pair_keys[i].split(' ')[0], pair_keys[i].split(' ')[1]]
-            #print(chord_split)
-            matrix[dic[chord_split[0]], dic[chord_split[1]]] = value
-        for i in range(len(matrix[0, ])):
-            sum_count = sum(matrix[i, ])
-            for j in range(len(matrix[0, ])):
-                if sum_count != 0:
-                    matrix[i, j] = np.divide(matrix[i, j], sum_count)
-        return (matrix, dic)
+    # @staticmethod
+    # def get_stochastic_matrix(pairs, singles):
+    #     pair_keys = list(pairs.keys())
+    #     single_keys = list(singles.keys())
+    #     pair_size = len(pair_keys)
+    #     single_size = len(single_keys)
+    #     dic = {}
+    #     for i in range(single_size):
+    #         dic[single_keys[i]] = i
+    #     matrix = np.zeros((single_size, single_size), dtype=float)
+    #     for i in range(pair_size):
+    #         value = pairs[pair_keys[i]]
+    #         chord_split = [pair_keys[i].split(' ')[0], pair_keys[i].split(' ')[1]]
+    #         #print(chord_split)
+    #         matrix[dic[chord_split[0]], dic[chord_split[1]]] = value
+    #     for i in range(len(matrix[0, ])):
+    #         sum_count = sum(matrix[i, ])
+    #         for j in range(len(matrix[0, ])):
+    #             if sum_count != 0:
+    #                 matrix[i, j] = np.divide(matrix[i, j], sum_count)
+    #     return (matrix, dic)
 
     @staticmethod
     def get_chord_probabilities(dic):
