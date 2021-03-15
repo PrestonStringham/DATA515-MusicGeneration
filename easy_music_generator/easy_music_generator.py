@@ -23,12 +23,6 @@ class EasyMusicGenerator:
         backing_chord = preg.generate_backing_chords(self.chord_distribution,
                                                      bars)
 
-        backing_string = '['
-        for i in range(len(backing_chord)):
-            backing_string += str(backing_chord[i]) + ', '
-        backing_string += str(backing_string[len(backing_string)-1])
-        backing_string += ']'
-
         BUNDLE_PATH = "lakh2_polyphony_rnn.mag"
 
         OUTPUT_PATH = output_path
@@ -40,7 +34,7 @@ class EasyMusicGenerator:
                   BUNDLE_PATH + ' --output_dir=' + OUTPUT_PATH +\
                   ' --num_outputs=1 --num_steps=' + num_steps +\
                   ' --primer_melody="' + primer_string +\
-                  '" --primer_pitches="' + backing_string +\
+                  '" --primer_pitches="' + backing_chord +\
                   '" --condition_on_primer=true ' \
                   '--inject_primer_during_generation=false'
 
