@@ -35,18 +35,18 @@ Install using the following PIP command line.
                 |-...
              |- preprocessor/ 
                 |- tests
-                    |- _init_.py
+                    |- __init__.py
                     |- test_chord_distribution.py
                     |- test_note_distribution.py
                     |- test_preprocessor.py
-                |- _init_.py
+                |- __init__.py
                 |- chord_distribution.py
                 |- note_distribution.py
                 |- preprocessor.py
              |- tests/
-                |-_init_.py
+                |-__init__.py
                 |-test_easy_music_generator.py
-             |- _init__.py
+             |- __init__.py
              |- __version.py
              |- easy_music_generator.py
              |- example.py
