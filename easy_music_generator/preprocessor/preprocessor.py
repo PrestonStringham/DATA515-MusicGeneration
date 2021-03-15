@@ -5,11 +5,11 @@ import glob
 
 
 class Preprocessor:
-'''
-This class contains methods to process MIDI and/or MXL files provided by user. 
-The objective is to understand the distribution of notes and chords in the songs.
-After processing it, the output are a note probability matrix and a chord probability matrix.
-'''
+    '''
+    This class contains methods to process MIDI and/or MXL files provided by user. 
+    The objective is to understand the distribution of notes and chords in the songs.
+    After processing it, the output are a note probability matrix and a chord probability matrix.
+    '''
     def __init__(self):
         self.scores = None
 
@@ -17,7 +17,7 @@ After processing it, the output are a note probability matrix and a chord probab
         '''
         This method takes MIDI and MusicXML files as input and it outputs a list of score objects.
 
-        Scores are a Music21 objects that allows to represent multi-part music in a data format that is easy to work with.
+        Scores are a Music21 objects that allows to represent multi-part music in a usable data format.
         '''
         # Look for MusicXML and MIDI Files
         mxlfiles = [f for f in glob.glob(path + "*.mxl")]
