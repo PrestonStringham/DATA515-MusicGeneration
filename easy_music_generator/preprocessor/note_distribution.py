@@ -1,9 +1,6 @@
 import music21 as mus
 import numpy as np
 import sys
-np.set_printoptions(threshold=sys.maxsize)
-# import matplotlib.pyplot as plt
-
 
 class NoteDistribution:
     '''
@@ -22,8 +19,9 @@ class NoteDistribution:
         OUTPUT: (128x128 matrix, {Note: probability})
         '''
         # Dictionary to store probabilites of neighboring notes
-        dic = {}
-        note_dic = {}
+
+        note_pair_dictionary = {}
+        note_dictionary = {}
         
         # iterate through all the scores
         for score in scores:
@@ -39,30 +37,31 @@ class NoteDistribution:
                 pair = str(notes[i].pitch.midi) + " " + str(notes[i+1].pitch.midi)
 
                 # Add them to the dictionary
-                if pair in dic:
-                    dic[pair] += 1
+                if pair in note_pair_dictionary:
+                    note_pair_dictionary[pair] += 1
                 else:
-                    dic[pair] = 1
+                    note_pair_dictionary[pair] = 1
 
-                if str(notes[i].pitch.midi) in note_dic:
-                    note_dic[str(notes[i].pitch.midi)] += 1
+                if str(notes[i].pitch.midi) in note_dictionary:
+                    note_dictionary[str(notes[i].pitch.midi)] += 1
                 else:
-                    note_dic[str(notes[i].pitch.midi)] = 1
+                    note_dictionary[str(notes[i].pitch.midi)] = 1
 
             # Get the very last note since we miss it in the loop above
-            if notes[len(notes)-1].pitch.midi in note_dic:
-                note_dic[str(notes[len(notes) - 1].pitch.midi)] += 1
+            if notes[len(notes)-1].pitch.midi in note_dictionary:
+                note_dictionary[str(notes[len(notes) - 1].pitch.midi)] += 1
             else:
-                note_dic[str(notes[len(notes) - 1].pitch.midi)] = 1
+                note_dictionary[str(notes[len(notes) - 1].pitch.midi)] = 1
             # Check if the notes are actually being added to the dictionary
             # We could have issues if a file ONLY has chords
-            if len(dic.keys()) == 0:
+            if len(note_pair_dictionary.keys()) == 0:
                 raise NoNotesFoundException()
 
-            note_dic = NoteDistribution.get_note_probabilities(note_dic)
-            stochastic_matrix = NoteDistribution.get_stochastic_note_matrix(dic)
+            note_dictionary_probability = NoteDistribution.get_note_probabilities(note_dictionary)
+            stochastic_matrix = NoteDistribution.get_stochastic_note_matrix(note_pair_dictionary)
 
-        return (stochastic_matrix, note_dic)
+
+        return (stochastic_matrix, note_dictionary_probability)
 
     @staticmethod
     def get_stochastic_note_matrix(distribution):
