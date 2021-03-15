@@ -19,7 +19,7 @@ class Pregenerator:
 
         for i in range(bars - 1):
             primer_melody_arr.append(np.random.choice([-1, -2]))
-            next_note = np.random.choice(range(128), p=matrix[current_note, ])
+            next_note = np.random.choice(a=range(128), p=matrix[current_note, ])
             primer_melody_arr.append(next_note)
             current_note = next_note
 
@@ -28,11 +28,7 @@ class Pregenerator:
     def generate_backing_chords(self, chord_dictionary, bars):
         chords = list(chord_dictionary.keys())
         chord_probability = list(chord_dictionary.values())
-        first_chord = mus.harmony.ChordSymbol(np.random.choice(
-            chords, p=chord_probability)).pitches
-        first_chord_array = []
-
-        for i in first_chord:
-            first_chord_array.append(i.midi)
-
-        return first_chord_array
+        first_chord_index = int(np.random.choice(a=range(len(chords)), p=chord_probability))
+        first_chord = chords[first_chord_index]
+        
+        return first_chord
