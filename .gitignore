@@ -1,5 +1,15 @@
 #
-# Ignore cached Python byte code
+# The SQLite database used by Coverage
+#
+.coverage
+
+#
+# Output files from Easy Music Generator
+#
+easy_music_generator/output/*
+
+#
+# Cached Python byte code
 #
 __pycache__
 
