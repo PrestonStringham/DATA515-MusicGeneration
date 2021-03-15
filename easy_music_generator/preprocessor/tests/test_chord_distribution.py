@@ -17,10 +17,11 @@ class TestChordDistribution(unittest.TestCase):
         s = mus.stream.Score()
         c1 = mus.chord.Chord(['D', 'F#', 'A'])
         c2 = mus.chord.Chord('A4 C#5 E5')
+
         s.append(c1)
         s.append(c2)
 
-        expected_output = {'D': 0.5, 'A': 0.5}
+        expected_output = {'[62, 66, 69]': 0.5, '[69, 73, 76]': 0.5}
         actual_output = cd.ChordDistribution.get_chord_matrix([s])
         self.assertEqual(expected_output, actual_output)
 
@@ -33,7 +34,7 @@ class TestChordDistribution(unittest.TestCase):
         no_chord_score_obj = mus.stream.Score()
         no_chord_score_obj.append(mus.note.Note('G9'))
         no_chord_score_obj.append(mus.note.Note('F9'))
-        expected_output = {'Gpedal': 0.5, 'Fpedal': 0.5}
+        expected_output = {'[127]': 0.5, '[125]': 0.5}
 
         chord_distro = cd.ChordDistribution()
         actual_output = chord_distro.get_chord_matrix([no_chord_score_obj])
