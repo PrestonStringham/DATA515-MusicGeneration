@@ -1,9 +1,7 @@
 import preprocessor.preprocessor as pp
 import pregenerator as pg
 import subprocess
-from subprocess import DEVNULL, STDOUT  # , check_call
-# import os
-
+from subprocess import DEVNULL, STDOUT 
 
 class EasyMusicGenerator:
 
@@ -31,7 +29,6 @@ class EasyMusicGenerator:
         backing_string += str(backing_string[len(backing_string)-1])
         backing_string += ']'
 
-        # backing_string = ' '.join(backing_chords)
         BUNDLE_PATH = "lakh2_polyphony_rnn.mag"
 
         OUTPUT_PATH = output_path
@@ -46,6 +43,7 @@ class EasyMusicGenerator:
                   '" --primer_pitches="' + backing_string +\
                   '" --condition_on_primer=true ' \
                   '--inject_primer_during_generation=false'
+
         command = f'{command}'
 
         process = subprocess.Popen(command, shell=True,
