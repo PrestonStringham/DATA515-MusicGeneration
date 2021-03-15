@@ -10,7 +10,7 @@ class NoteDistribution:
     @staticmethod
     def get_note_matrix(scores):
         # Dictionary to store probabilites of neighboring notes
-        dictionary = {}
+        note_pair_dictionary = {}
         note_dictionary = {}
         # iterate through all the scores
         for score in scores:
@@ -30,10 +30,10 @@ class NoteDistribution:
                     + str(notes[i+1].pitch.midi)
 
                 # Add them to the dictionary
-                if pair in dictionary:
-                    dictionary[pair] += 1
+                if pair in note_pair_dictionary:
+                    note_pair_dictionary[pair] += 1
                 else:
-                    dictionary[pair] = 1
+                    note_pair_dictionary[pair] = 1
 
                 if str(notes[i].pitch.midi) in note_dictionary:
                     note_dictionary[str(notes[i].pitch.midi)] += 1
@@ -47,13 +47,13 @@ class NoteDistribution:
                 note_dictionary[str(notes[len(notes) - 1].pitch.midi)] = 1
             # Check if the notes are actually being added to the dictionary
             # We could have issues if a file ONLY has chords
-            if len(dictionary.keys()) == 0:
+            if len(note_pair_dictionary.keys()) == 0:
                 raise NoNotesFoundException()
 
             note_dictionary_probability = \
                 NoteDistribution.get_note_probabilities(note_dictionary)
             stochastic_matrix = \
-                NoteDistribution.get_stochastic_note_matrix(dictionary)
+                NoteDistribution.get_stochastic_note_matrix(note_pair_dictionary)
 
         return (stochastic_matrix, note_dictionary_probability)
 
