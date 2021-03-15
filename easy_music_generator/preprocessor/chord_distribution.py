@@ -77,6 +77,6 @@ class ChordDistribution:
         return dictionary
 
 class NoChordsFoundException(Exception):
-    def __init__(self, message="The provided files do not contain any chords."):
+    def __init__(self, message="The provided MIDI or MusicXML files do not contain any chords."):
         self.message = message
         super().__init__(self.message)
