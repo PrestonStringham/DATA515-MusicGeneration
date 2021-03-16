@@ -1,7 +1,8 @@
-import preprocessor.preprocessor as pp
-import pregenerator as pg
+import easy_music_generator.preprocessor.preprocessor as pp
+import easy_music_generator.pregenerator as pg
 import subprocess
-from subprocess import DEVNULL, STDOUT 
+import os
+from subprocess import DEVNULL, STDOUT
 
 class EasyMusicGenerator:
 
@@ -11,7 +12,7 @@ class EasyMusicGenerator:
 
     filepath = '/music_generator_output'
 
-    def generate(self, tempo=90, bars=4, output_path=filepath):
+    def generate(self, bars=4, output_path=filepath):
         preg = pg.Pregenerator()
         primer_melody = preg.generate_primer_melody(self.note_matrix, bars)
         primer_string = '['
@@ -22,8 +23,9 @@ class EasyMusicGenerator:
 
         backing_chord = preg.generate_backing_chords(self.chord_distribution,
                                                      bars)
+        print(os.getcwd())
 
-        BUNDLE_PATH = "lakh2_polyphony_rnn.mag"
+        BUNDLE_PATH = "../easy_music_generator/lakh2_polyphony_rnn.mag"
 
         OUTPUT_PATH = output_path
 
@@ -41,7 +43,7 @@ class EasyMusicGenerator:
         command = f'{command}'
 
         process = subprocess.Popen(command, shell=True,
-                                   stdout=DEVNULL, stderr=STDOUT)
+                                   stdout=subprocess.PIPE)
         process.wait()
 
     def analyze(self, input_path):
