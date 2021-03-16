@@ -17,16 +17,22 @@ Clone this repository to your local computer.
 Change directories to the local copy of the repo.
 
     cd DATA515-MusicGeneration
+    
+Activate a base anaconda environment.
+ 
+    conda activate
 
 Install using the following PIP command line.
 
-    pip install -e .
+    pip install .
 
 
 [project-info]:https://canvas.uw.edu/courses/1434044/pages/project-infomation
 
 
 # Usage #
+
+Make sure that you are inside the DATA515-MusicGeneration directory before running the following code.
 
 ```python 
 from easy_music_generator import easy_music_generator as emg
