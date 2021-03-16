@@ -40,12 +40,14 @@ class EasyMusicGenerator:
                   '" --primer_pitches="' + backing_chord +\
                   '" --condition_on_primer=true ' \
                   '--inject_primer_during_generation=false'
-
-        command = f'{command}'
-
-        process = subprocess.Popen(command, shell=True,
-                                   stdout=subprocess.PIPE)
-        process.wait()
+        try:
+            command = f'{command}'
+            process = subprocess.Popen(command, shell=True,
+                                       stdout=DEVNULL, stderr=DEVNULL)
+            process.wait()
+            print('Generated successfully!')
+        except Exception:
+            print('Error. File not generated successfully.')
 
     def analyze(self, input_path):
         prep = pp.Preprocessor()
