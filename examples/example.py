@@ -1,6 +1,6 @@
 import sys
 sys.path.append('../')
-import easy_music_generator.easy_music_generator as emg
+from easy_music_generator import easy_music_generator as emg
 
 emg_obj = emg.EasyMusicGenerator()
 

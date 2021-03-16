@@ -26,6 +26,16 @@ Install using the following PIP command line.
 [project-info]:https://canvas.uw.edu/courses/1434044/pages/project-infomation
 
 
+# Usage #
+
+<code>
+from easy_music_generator import easy_music_generator as emg
+
+emg_obj = emg.EasyMusicGenerator()
+emg_obj.analyze('music/')
+emg_obj.generate(10, 'output/')
+</code>
+
 # Project Structure #
 
     |- DATA515-MusicGeneration/
@@ -33,7 +43,7 @@ Install using the following PIP command line.
           |- easy_music_generator/
              |- music/
                 |-...
-             |- preprocessor/ 
+             |- preprocessor/
                 |- tests
                     |- __init__.py
                     |- test_chord_distribution.py
@@ -60,4 +70,3 @@ Install using the following PIP command line.
           |- setup.py
 
 ### --- END --- ###
-
