@@ -47,7 +47,9 @@ emg_obj.generate(number_of_bars, output_file_path)
 # Project Structure #
 
     |- DATA515-MusicGeneration/
+          |.vscode
           |- doc/
+            |-...
           |- easy_music_generator/
              |- music/
                 |-...
@@ -67,9 +69,15 @@ emg_obj.generate(number_of_bars, output_file_path)
              |- __init__.py
              |- __version.py
              |- easy_music_generator.py
-             |- example.py
              |- pregenerator.py
              |- lakh2_polyphony_rnn.mag  
+          |- examples
+            |- music
+                |- ...
+            |- example.py
+            |- example_notebook.ipynb
+          |- tests
+            |- emg-import-test.py
           |- .gitignore
           |- .travis.yml
           |- LICENSE
