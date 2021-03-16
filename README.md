@@ -28,13 +28,15 @@ Install using the following PIP command line.
 
 # Usage #
 
-<code>
+```python 
 from easy_music_generator import easy_music_generator as emg
-
 emg_obj = emg.EasyMusicGenerator()
-emg_obj.analyze('music/')
-emg_obj.generate(10, 'output/')
-</code>
+input_file_path = 'music/'
+emg_obj.analyze(input_file_path)
+output_file_path = 'output/'
+number_of_bars = 10
+emg_obj.generate(number_of_bars, output_file_path)
+```
 
 # Project Structure #
 
