@@ -1,5 +1,5 @@
 import unittest
-import preprocessor.chord_distribution as cd
+from easy_music_generator.preprocessor import chord_distribution as cd
 import music21 as mus
 
 

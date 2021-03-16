@@ -1,5 +1,5 @@
 import unittest
-import preprocessor.preprocessor as p
+from easy_music_generator.preprocessor import preprocessor as p
 
 
 class TestPreprocessor(unittest.TestCase):
@@ -11,7 +11,8 @@ class TestPreprocessor(unittest.TestCase):
         '''
 
         preprocessor_obj = p.Preprocessor()
-        score = preprocessor_obj.parse_scores("./music/test_parse_scores/")
+        score = preprocessor_obj.parse_scores(
+                "./easy_music_generator/music/test_parse_scores/")
 
         self.assertEqual("<class 'list'>", str(type(score)))
 
