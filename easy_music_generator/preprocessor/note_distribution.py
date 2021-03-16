@@ -47,6 +47,10 @@ class NoteDistribution:
                 else:
                     note_dictionary[str(notes[i].pitch.midi)] = 1
 
+            # Raise NoNotesFoundException if notes is empty
+            if len(notes) == 0: 
+                raise NoNotesFoundException()
+
             # Get the very last note since we miss it in the loop above
             if notes[len(notes)-1].pitch.midi in note_dictionary:
                 note_dictionary[str(notes[len(notes) - 1].pitch.midi)] += 1
