@@ -13,7 +13,7 @@ before_script:
  - flake8 easy_music_generator/__init__.py
 
 script: 
- - cd easy_music_generator && coverage run -m unittest discover
+ - coverage run -m unittest discover
 
 after_success:
   - coverage report

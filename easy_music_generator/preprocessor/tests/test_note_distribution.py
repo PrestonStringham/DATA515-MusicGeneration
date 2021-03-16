@@ -1,5 +1,5 @@
 import unittest
-import preprocessor.note_distribution as nd
+from easy_music_generator.preprocessor import note_distribution as nd
 import numpy as np
 import music21 as mus
 
@@ -43,7 +43,7 @@ class TestNoteDistribution(unittest.TestCase):
         Test that get_note_matrix() raises an exception when the score
         object it gets does not contain any notes
         '''
-        score = mus.converter.parse('./music/test_no_notes_exception.xml')
+        score = mus.converter.parse('./easy_music_generator/music/test_no_notes_exception.xml')
         with self.assertRaises(nd.NoNotesFoundException) as context:
             nd.NoteDistribution.get_note_matrix([score])
 
