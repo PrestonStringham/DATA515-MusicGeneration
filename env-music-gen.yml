@@ -5,18 +5,13 @@ channels:
   - conda-forge
 
 dependencies:
-  - python=3.7
+  - python=3.8
   - numpy
   - scipy
   - pandas
   - scikit-learn=0.24
   - matplotlib 
   - seaborn
-  - typing_extensions  # needed for pytorch
-  - jupyter
-  - nb_conda_kernels
-  - ipykernel
-  - jupytext 
 
 
 # --- END --- #
