@@ -23,9 +23,10 @@ class EasyMusicGenerator:
 
         backing_chord = preg.generate_backing_chords(self.chord_distribution,
                                                      bars)
-        print(os.getcwd())
 
-        BUNDLE_PATH = "../easy_music_generator/lakh2_polyphony_rnn.mag"
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+
+        BUNDLE_PATH = dir_path + "/lakh2_polyphony_rnn.mag"
 
         OUTPUT_PATH = output_path
 
