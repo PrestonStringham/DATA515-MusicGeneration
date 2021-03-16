@@ -1,12 +1,12 @@
-from preprocessor.note_distribution import NoteDistribution
-from preprocessor.chord_distribution import ChordDistribution
+from easy_music_generator.preprocessor.note_distribution import NoteDistribution
+from easy_music_generator.preprocessor.chord_distribution import ChordDistribution
 import music21 as mus
 import glob
 
 
 class Preprocessor:
     '''
-    This class contains methods to process MIDI and/or MXL files provided by user. 
+    This class contains methods to process MIDI and/or MXL files provided by user.
     The objective is to understand the distribution of notes and chords in the songs.
     After processing it, the output are a note probability matrix and a chord probability matrix.
     '''
@@ -23,7 +23,7 @@ class Preprocessor:
         mxlfiles = [f for f in glob.glob(path + "*.mxl")]
         midifiles = [f for f in glob.glob(path + "*.mid")]
         files = mxlfiles + midifiles
-        
+
         # If no MIDI or MusicXML files exist, raise exception
         if len(files) == 0:
             raise NoFilesFoundException()
