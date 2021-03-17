@@ -30,8 +30,4 @@ class TestPreprocessor(unittest.TestCase):
 
         self.assertEqual(
             context.exception.message,
-            "No MIDI or MusicXML files found in "
-                 "the provided directory. Please check the path.")
-
-
-
+            "No MIDI or MusicXML files found in the provided directory. Please check the path.")
