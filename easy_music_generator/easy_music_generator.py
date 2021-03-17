@@ -2,11 +2,12 @@ import easy_music_generator.preprocessor.preprocessor as pp
 import easy_music_generator.pregenerator as pg
 import subprocess
 import os
-from subprocess import DEVNULL, STDOUT
+from subprocess import DEVNULL
+
 
 class EasyMusicGenerator:
     '''
-    This is the main class. It contains two methods: generate and analyze. 
+    This is the main class. It contains two methods: generate and analyze.
     This class calls other helper classes: preprocessor and pregenerator.
     '''
     def __init__(self):
@@ -17,7 +18,8 @@ class EasyMusicGenerator:
 
     def generate(self, bars=4, output_path=filepath):
         '''
-        This method uses the instantiated matrices from analyze() to generate music.
+        This method uses the instantiated matrices
+        from analyze() to generate music.
         bars: length of the music
         output_path: path to the directory where to output MIDI file
 
@@ -70,12 +72,15 @@ class EasyMusicGenerator:
 
     def analyze(self, input_path):
         '''
-        This method takes a directory with MIDI or MusicXML files.
-        It instantiates two matrices: note distribution matrix and chord distribution.
-        These matrices will be used to generate music in the generate() method. 
+        This method takes a directory with
+        MIDI or MusicXML files.
+        It instantiates two matrices: note distribution
+        matrix and chord distribution.
+        These matrices will be used to generate
+        music in the generate() method.
         '''
         prep = pp.Preprocessor()
-        scores_parsed = prep.parse_scores(input_path)
+        prep.parse_scores(input_path)
         note_matrix = prep.get_note_matrix()
         chord_distribution = prep.get_chord_matrix()
         self.note_matrix = note_matrix
