@@ -7,7 +7,7 @@ from subprocess import DEVNULL, STDOUT
 class EasyMusicGenerator:
     '''
     This is the main class. It contains two methods: generate and analyze. 
-    These class calls other helper classes: preprocessor and pregenerator.
+    This class calls other helper classes: preprocessor and pregenerator.
     '''
     def __init__(self):
         self.note_matrix = None
@@ -17,8 +17,7 @@ class EasyMusicGenerator:
 
     def generate(self, bars=4, output_path=filepath):
         '''
-        This method uses the instatiated matrices from analyze() to generate music.
-        tempo: speed of the song
+        This method uses the instantiated matrices from analyze() to generate music.
         bars: length of the music
         output_path: path to the directory where to output MIDI file
 
@@ -44,7 +43,7 @@ class EasyMusicGenerator:
 
         dir_path = os.path.dirname(os.path.realpath(__file__))
 
-        # Second stage: Generate music usin Polyphony RNN
+        # Second stage: Generate music using Polyphony RNN
         # Polyphony RNN model trained on segment of Lakh MIDI
         BUNDLE_PATH = dir_path + "/lakh2_polyphony_rnn.mag"
 

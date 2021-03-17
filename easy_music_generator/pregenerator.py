@@ -6,7 +6,7 @@ class Pregenerator:
     '''
     This class has methods to generate the primers.
     Primers include primer melody and primer backing chords. 
-    These primers will be serve as input for the RNN model to generate more music. 
+    These primers will serve as input for the RNN model to generate more music. 
 
     '''
     def __init__(self):
