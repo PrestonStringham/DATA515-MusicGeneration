@@ -1,13 +1,13 @@
 """Top-level __init__.py for EasyMusicGenerator
 """
 
-from easy_music_generator.preprocessor.chord_distribution import (
+from .preprocessor.chord_distribution import (
     ChordDistribution)
 
-from easy_music_generator.preprocessor.note_distribution import (
+from .preprocessor.note_distribution import (
     NoteDistribution, NoNotesFoundException)
 
-from easy_music_generator.preprocessor.preprocessor import (
+from .preprocessor.preprocessor import (
     Preprocessor, NoFilesFoundException)
 
 from .__version import __version__
