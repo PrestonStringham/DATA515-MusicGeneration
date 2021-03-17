@@ -61,7 +61,6 @@ class EasyMusicGenerator:
                   '" --condition_on_primer=true ' \
                   '--inject_primer_during_generation=false'
         try:
-            #command = f'{command}'
             process = subprocess.Popen(command, shell=True,
                                        stdout=DEVNULL, stderr=DEVNULL)
             process.wait()
