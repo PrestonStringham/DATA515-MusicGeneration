@@ -56,7 +56,6 @@ class Preprocessor:
 
 class NoFilesFoundException(Exception):
     def __init__(self,
-                 message="No MIDI or MusicXML files found in the \
-                 provided directory. Please check the path."):
+                 message="No MIDI or MusicXML files found in the provided directory. Please check the path."):
         self.message = message
         super().__init__(self.message)

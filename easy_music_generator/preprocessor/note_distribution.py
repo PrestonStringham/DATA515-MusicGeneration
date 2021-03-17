@@ -112,9 +112,9 @@ class NoteDistribution:
 
 
 class NoNotesFoundException(Exception):
-'''
-This class contains methods to raise exception of files having no notes.
-'''
+    '''
+    This class contains methods to raise exception of files having no notes.
+    '''
 
     def __init__(self, message="The provided MIDI or MusicXML files do not contain any notes."):
         self.message = message
