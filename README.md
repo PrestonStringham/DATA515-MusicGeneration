@@ -14,6 +14,14 @@ The requirements for the project are described [here][project-info]
 **EasyMusicGenerator** can take significant time. The install process
 described here can take 30+ minutes.
 
+Next, clone this repository to your local computer.
+
+    git clone https://github.com/PrestonStringham/DATA515-MusicGeneration
+
+Change directories to the local copy of the repository.
+
+    cd DATA515-MusicGeneration
+
 The `pip` installer has difficulty installing some Python packages used
 for data science. We recommend that you create a custom conda
 environment using the provided `env-music-gen.yml` file.
@@ -24,13 +32,7 @@ Activate the newly created conda environment, `music-gen-515`.
 
     conda activate music-gen-515 
 
-Next, clone this repository to your local computer.
 
-    git clone https://github.com/PrestonStringham/DATA515-MusicGeneration
-
-Change directories to the local copy of the repository.
-
-    cd DATA515-MusicGeneration
     
 Install the package--and remaining package requirements--using the
 following PIP command line.
