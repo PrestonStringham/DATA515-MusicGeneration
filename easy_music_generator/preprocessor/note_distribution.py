@@ -3,10 +3,10 @@ import numpy as np
 
 
 class NoteDistribution:
-'''
-This class contains methods to get statistics about the
-notes in the melody of a song.
-'''
+    '''
+    This class contains methods to get statistics about the
+    notes in the melody of a song.
+    '''
 
     def __init__(self):
         pass
