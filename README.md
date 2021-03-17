@@ -65,6 +65,10 @@ number_of_bars = 10
 emg_obj.generate(number_of_bars, output_file_path)
 ```
 
+This code is also available in `examples/example.py`, but your must be
+in the `examples` directory in order to run that file.
+
+
 # Project Structure #
 
     |- DATA515-MusicGeneration/
