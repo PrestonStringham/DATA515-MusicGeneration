@@ -43,7 +43,7 @@ class TestNoteDistribution(unittest.TestCase):
         Test that get_note_matrix() raises an exception when the score
         object it gets does not contain any notes
         '''
-        score = mus.stream.Score()        
+        score = mus.stream.Score()
         with self.assertRaises(nd.NoNotesFoundException) as context:
             nd.NoteDistribution.get_note_matrix([score])
 

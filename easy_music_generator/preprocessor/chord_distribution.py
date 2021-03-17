@@ -13,7 +13,7 @@ class ChordDistribution:
     def get_chord_matrix(scores):
         '''
         This method takes a list of scores as input.
-        The output is a matrix with the probability of chords occuring. 
+        The output is a matrix with the probability of chords occuring.
 
         OUTPUT: chord matrix
         '''
@@ -39,8 +39,8 @@ class ChordDistribution:
                         pitches = elements[i].pitches
                         chords.append(str([pitch.midi for pitch in pitches]))
             chord_arr = chord_arr + chords
-        
-        #Raise exception if no chords found
+
+        # Raise exception if no chords found
         if len(chord_arr) == 0:
             raise NoChordsFoundException()
 
@@ -56,12 +56,11 @@ class ChordDistribution:
             chord_dictionary)
         return chord_distribution
 
-
     @staticmethod
     def get_chord_probabilities(dictionary):
         '''
         This method takes a dictionary as input. {chord : number of occurences}
-        The output is a dictionary with the probabilities of chords. 
+        The output is a dictionary with the probabilities of chords.
 
         OUTPUT: {chord : probability}
         '''
@@ -70,7 +69,16 @@ class ChordDistribution:
             dictionary[key] /= total
         return dictionary
 
+
 class NoChordsFoundException(Exception):
-    def __init__(self, message="The provided MIDI or MusicXML files do not contain any chords."):
+
+    '''
+    This is an exception class that will be invoked when there
+    no MIDI or MusicXML in the input folder.
+
+    It will also be triggered when there are no chords in the Score object.
+    '''
+    def __init__(self, message="The provided MIDI or MusicXML" /
+                               "files do not contain any chords."):
         self.message = message
         super().__init__(self.message)
