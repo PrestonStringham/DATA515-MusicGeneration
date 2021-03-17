@@ -78,7 +78,6 @@ class NoChordsFoundException(Exception):
 
     It will also be triggered when there are no chords in the Score object.
     '''
-    def __init__(self, message="The provided MIDI or MusicXML" /
-                               "files do not contain any chords."):
+    def __init__(self, message="The provided MIDI or MusicXML files do not contain any chords."):
         self.message = message
         super().__init__(self.message)
