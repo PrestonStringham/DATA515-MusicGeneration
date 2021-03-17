@@ -1,14 +1,18 @@
 
 ![Travis (.org)](https://img.shields.io/travis/PrestonStringham/DATA515-MusicGeneration)
 
-This repo is our team project for Data 515 in the University of
-Washington Masters in Data Science program.
+This repository contains our team project for Data 515 in the University
+of Washington Masters in Data Science program.
 
 The requirements for the project are described [here][project-info]
 [access required].
 
 
 # Installation #
+
+**NOTE:** Installation of some of the packages required for
+**EasyMusicGenerator** can take significant time. The install process
+described here can take 30+ minutes.
 
 The `pip` installer has difficulty installing some Python packages used
 for data science. We recommend that you create a custom conda
@@ -24,14 +28,24 @@ Next, clone this repository to your local computer.
 
     git clone https://github.com/PrestonStringham/DATA515-MusicGeneration
 
-Change directories to the local copy of the repo.
+Change directories to the local copy of the repository.
 
     cd DATA515-MusicGeneration
     
-Install package--and remaining package requirements--using the following
-PIP command line.
+Install the package--and remaining package requirements--using the
+following PIP command line.
 
     pip install .
+
+If after using **EasyMusicGenerator**, you'd like to remove the
+recommended conda environment, use the following commands.
+
+    conda activate
+    conda remove --name music-gen-515 --all
+
+Verify removal.
+
+    conda env list
 
 
 [project-info]:https://canvas.uw.edu/courses/1434044/pages/project-infomation
@@ -105,4 +119,6 @@ Colin Raffel. "Learning-Based Methods for Comparing Sequences, with Applications
 # MODEL 
 
 We used [Magenta's Polyphony RNN](https://github.com/magenta/magenta/tree/master/magenta/models/polyphony_rnn). 
+
+
 ### --- END --- ###
