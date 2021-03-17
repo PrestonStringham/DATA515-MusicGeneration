@@ -14,7 +14,7 @@ The requirements for the project are described [here][project-info]
 **EasyMusicGenerator** can take significant time. The install process
 described here can take 30+ minutes.
 
-Next, clone this repository to your local computer.
+Clone this repository to your local computer.
 
     git clone https://github.com/PrestonStringham/DATA515-MusicGeneration
 
