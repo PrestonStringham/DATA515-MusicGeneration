@@ -9,9 +9,8 @@ from setuptools import setup, find_packages
 setup(
     name='EasyMusicGenerator',
     version='0.1.0',
-    packages=find_packages(include=['EasyMusicGenerator',
-                                    'Preprocessor',
-                                    'Pregenerator',
+    packages=find_packages(include=['easy_music_generator',
+                                    'easy_music_generator.preprocessor',
                                     ]),
     install_requires=[
         'numpy==1.20',
