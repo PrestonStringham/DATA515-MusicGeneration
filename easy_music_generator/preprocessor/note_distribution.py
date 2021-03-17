@@ -1,11 +1,12 @@
 import music21 as mus
 import numpy as np
-import sys
+
 
 class NoteDistribution:
-    '''
-    This class contains methods to get statistics about the notes in the melody of a song. 
-    '''
+'''
+This class contains methods to get statistics about the
+notes in the melody of a song.
+'''
 
     def __init__(self):
         pass
@@ -14,7 +15,8 @@ class NoteDistribution:
     def get_note_matrix(scores):
         '''
         This method takes a list of score objects as input.
-        The output is a tuple containing the a 128x128 matrix with MIDI notes probabilities and a note probability dictionary.
+        The output is a tuple containing the a 128x128 matrix
+        with MIDI notes probabilities and a note probability dictionary.
 
         OUTPUT: (128x128 matrix, {Note: probability})
         '''
@@ -22,7 +24,7 @@ class NoteDistribution:
 
         note_pair_dictionary = {}
         note_dictionary = {}
-        
+
         # iterate through all the scores
         for score in scores:
             # The actual list of notes
@@ -48,7 +50,7 @@ class NoteDistribution:
                     note_dictionary[str(notes[i].pitch.midi)] = 1
 
             # Raise NoNotesFoundException if notes is empty
-            if len(notes) == 0: 
+            if len(notes) == 0:
                 raise NoNotesFoundException()
 
             # Get the very last note since we miss it in the loop above
@@ -64,14 +66,14 @@ class NoteDistribution:
             note_dictionary_probability = NoteDistribution.get_note_probabilities(note_dictionary)
             stochastic_matrix = NoteDistribution.get_stochastic_note_matrix(note_pair_dictionary)
 
-
         return (stochastic_matrix, note_dictionary_probability)
 
     @staticmethod
     def get_stochastic_note_matrix(distribution):
         '''
-        This method takes a dictionary as input {Note : probability}. 
-        It ouputs a 128x128 matrix representing the probability of each MIDI note and the interaction with other notes.
+        This method takes a dictionary as input {Note : probability}.
+        It ouputs a 128x128 matrix representing the probability of each
+        MIDI note and the interaction with other notes.
 
         OUPUT: 128x128 matrix
         '''
@@ -98,7 +100,7 @@ class NoteDistribution:
     @staticmethod
     def get_note_probabilities(distribution):
         '''
-        This method takes a dictionary as input {Note : number of occurences}. 
+        This method takes a dictionary as input {Note : number of occurences}.
         It ouputs a dictionary with the probability of each note occuring.
 
         OUTPUT:  {Note : probability}
@@ -110,6 +112,10 @@ class NoteDistribution:
 
 
 class NoNotesFoundException(Exception):
+'''
+This class contains methods to raise exception of files having no notes.
+'''
+
     def __init__(self, message="The provided MIDI or MusicXML files do not contain any notes."):
         self.message = message
         super().__init__(self.message)
