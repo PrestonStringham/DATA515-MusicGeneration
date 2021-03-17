@@ -1,9 +1,5 @@
-from easy_music_generator.preprocessor.note_distribution import (
-        NoteDistribution)
-
-from easy_music_generator.preprocessor.chord_distribution import (
-        ChordDistribution)
-
+from easy_music_generator.preprocessor.note_distribution import NoteDistribution
+from easy_music_generator.preprocessor.chord_distribution import ChordDistribution
 import music21 as mus
 import glob
 
