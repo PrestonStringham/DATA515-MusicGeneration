@@ -5,7 +5,10 @@ import os
 from subprocess import DEVNULL, STDOUT
 
 class EasyMusicGenerator:
-
+    '''
+    This is the main class. It contains two methods: generate and analyze. 
+    These class calls other helper classes: preprocessor and pregenerator.
+    '''
     def __init__(self):
         self.note_matrix = None
         self.chord_distribution = None
@@ -13,6 +16,21 @@ class EasyMusicGenerator:
     filepath = '/music_generator_output'
 
     def generate(self, bars=4, output_path=filepath):
+        '''
+        This method uses the instatiated matrices from analyze() to generate music.
+        tempo: speed of the song
+        bars: length of the music
+        output_path: path to the directory where to output MIDI file
+
+        First stage:
+        Pregenerator to generate primer melody and primer chord (pitches).
+
+        Second stage:
+        Use primers as input and generate more music using polyphony_rnn.
+
+        OUTPUT: MIDI file
+        '''
+        # First Stage: Generate primers
         preg = pg.Pregenerator()
         primer_melody = preg.generate_primer_melody(self.note_matrix, bars)
         primer_string = '['
@@ -26,6 +44,8 @@ class EasyMusicGenerator:
 
         dir_path = os.path.dirname(os.path.realpath(__file__))
 
+        # Second stage: Generate music usin Polyphony RNN
+        # Polyphony RNN model trained on segment of Lakh MIDI
         BUNDLE_PATH = dir_path + "/lakh2_polyphony_rnn.mag"
 
         OUTPUT_PATH = output_path
@@ -41,7 +61,7 @@ class EasyMusicGenerator:
                   '" --condition_on_primer=true ' \
                   '--inject_primer_during_generation=false'
         try:
-            command = f'{command}'
+            #command = f'{command}'
             process = subprocess.Popen(command, shell=True,
                                        stdout=DEVNULL, stderr=DEVNULL)
             process.wait()
@@ -50,6 +70,11 @@ class EasyMusicGenerator:
             print('Error. File not generated successfully.')
 
     def analyze(self, input_path):
+        '''
+        This method takes a directory with MIDI or MusicXML files.
+        It instantiates two matrices: note distribution matrix and chord distribution.
+        These matrices will be used to generate music in the generate() method. 
+        '''
         prep = pp.Preprocessor()
         scores_parsed = prep.parse_scores(input_path)
         note_matrix = prep.get_note_matrix()
