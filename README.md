@@ -91,5 +91,18 @@ emg_obj.generate(number_of_bars, output_file_path)
           |- README.md
           |- requirements.txt
           |- setup.py
+          
 
+# DATA
+
+We trained our model on a segment of [the Lakh MIDI Dataset](https://colinraffel.com/projects/lmd/). 
+
+The Lakh MIDI Dataset is distributed with a CC-BY 4.0 license. 
+
+Colin Raffel. "Learning-Based Methods for Comparing Sequences, with Applications to Audio-to-MIDI Alignment and Matching". PhD Thesis, 201. 
+
+
+# MODEL 
+
+We used [Magenta's Polyphony RNN](https://github.com/magenta/magenta/tree/master/magenta/models/polyphony_rnn). 
 ### --- END --- ###
