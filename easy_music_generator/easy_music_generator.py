@@ -1,4 +1,4 @@
-import easy_music_generator.preprocessor.preprocessor as pp
+from easy_music_generator.preprocessor import preprocessor as pp
 import easy_music_generator.pregenerator as pg
 import subprocess
 import os
@@ -65,6 +65,7 @@ class EasyMusicGenerator:
             command = f'{command}'
             process = subprocess.Popen(command, shell=True,
                                        stdout=DEVNULL, stderr=DEVNULL)
+
             process.wait()
             print('Generated successfully!')
         except Exception:
